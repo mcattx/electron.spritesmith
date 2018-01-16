@@ -1,0 +1,27 @@
+{
+  "name": "electron.spritesmith",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/titancat/electron.spritesmith.git"
+  },
+  "keywords": [
+    "electron",
+    "spritesmith"
+  ],
+  "author": "mcattx@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.7.10"
+  },
+  "bugs": {
+    "url": "https://github.com/titancat/electron.spritesmith/issues"
+  },
+  "homepage": "https://github.com/titancat/electron.spritesmith#readme"
+}

@@ -1,0 +1,20 @@
+# Mac OS X
+*.DS_Store
+
+# sass cache
+*.sass-cache*
+
+# node modules
+node_modules/
+
+# logs
+*.log
+
+# jetbrains
+.idea/
+
+# vscode
+.vscode
+
+# learn.md
+learn.md
