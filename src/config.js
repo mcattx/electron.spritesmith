@@ -4,7 +4,7 @@ const fs = require('fs')
 
 class Config {}
 
-Config.NAME = 'SpriteTool'
+Config.NAME = 'Esprite'
 Config.ROOT = path.join(__dirname, '../')
 Config.WROKSPACE = `${Config.NAME}_workspace`
 Config.CONFIGFILE = 'config.json'

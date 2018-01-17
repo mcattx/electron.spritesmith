@@ -26,7 +26,7 @@ function createWindow () {
     width: 360,
     height: 572,
     resizable: false,
-    title: 'SpriteTool',
+    title: 'Esprite',
     icon: logo
   })
 
