@@ -1,4 +1,4 @@
-import { remote } from "electron";
+const { electron, remote } = require('electron')
 
 const Menu = remote.Menu
 
@@ -65,6 +65,67 @@ const template = [
         ]
     }
 ]
+
+if (process.platform === 'darwin') {
+    const name = remote.app.getName();
+    template.unshift({
+        label: name,
+        submenu: [
+            {
+                label: '关于 Esprite',
+                click: (item, focusedWindow) => {
+                    showAbout()
+                }
+            },
+            {
+                type: 'separator'
+            },
+            {
+                label: '偏好设置',
+                accelerator: 'Command+,',
+                click: () => {
+                    settingFn()
+                }
+            },
+            {
+                label: '检查更新...',
+                accelerator: '',
+                click: () => {
+                    checkForUpdate()
+                }
+            },
+            {
+                type: 'separator',
+            },
+            {
+                label: '退出',
+                accelerator: 'Command+Q',
+                click: () => {
+                    stopWatch()
+                    remote.app.quit()
+                }
+            }
+        ]
+    })
+} else if(process.platform === 'win32') {
+    let helpItem = template[template.length - 1]
+
+    helpItem.submenu.unshift({
+        label: '检查更新...',
+        accelerator: '',
+        click: () => {
+            checkForUpdate()
+        }
+    })
+
+    helpItem.submenu.unshift({
+        label: '关于 Esprite',
+        click: (item, focusedWindow) => {
+            showAbout()
+        }
+    })
+}
+
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)

@@ -22,13 +22,18 @@ let willClose = false
 function createWindow () {
   // Create the browser window.
   // mainWindow = new BrowserWindow({width: 800, height: 600})
-  mainWindow = new BrowserWindow({
+  const windowConfig = {
     width: 360,
     height: 572,
     resizable: false,
     title: 'Esprite',
     icon: logo
-  })
+  }
+  if (config.debug) {
+    windowConfig.width = 560;
+    windowConfig.resizable = true;
+  }
+  mainWindow = new BrowserWindow(windowConfig)
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
