@@ -23,14 +23,13 @@ function createWindow () {
   // Create the browser window.
   // mainWindow = new BrowserWindow({width: 800, height: 600})
   const windowConfig = {
-    width: 360,
-    height: 572,
+    width: 750,
+    height: 500,
     resizable: false,
     title: 'Esprite',
     icon: logo
   }
   if (config.debug) {
-    windowConfig.width = 560;
     windowConfig.resizable = true;
   }
   mainWindow = new BrowserWindow(windowConfig)
