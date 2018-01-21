@@ -99,7 +99,16 @@ header {
     width: 500px;
     height: 260px;
     background-color: #f8f9fb;
-    border: 2px dashed #e0e1e2;
+    border: 4px solid #e0e1e2;
+    transition: all 2s ease;
+}
+
+#drop:hover {
+    border: 4px dashed #8690db;
+}
+
+#drop.enter {
+    border: 4px dashed #8690db;
 }
 
 #drop p {
