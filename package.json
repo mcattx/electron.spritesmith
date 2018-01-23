@@ -18,7 +18,7 @@
   "author": "mcattx@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.11"
   },
   "bugs": {
     "url": "https://github.com/titancat/electron.spritesmith/issues"
