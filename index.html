@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="assets/css/index.css">
   </head>
+  <script>
+    window.nodeRequire = require;
+    delete window.require;
+    delete window.exports;
+    delete window.module;
+  </script>
   <body>
     <header>
       <div class="logo">Esprite</div>
@@ -42,10 +48,10 @@
 
     <script>
       // You can also require other files to run in this process
-      require('./renderer.js')
+      nodeRequire('./renderer.js')
+      nodeRequire('./src/menu.js')
+      nodeRequire('./src/drop.js')
     </script>
     
-    <script src="./src/menu.js"></script>
-    <script src="./src/drop.js"></script>
   </body>
 </html>

@@ -1,3 +1,6 @@
+const path = nodeRequire('path')
+const sprite = nodeRequire(path.join(__dirname, '/tasks/sprite.js'));
+
 var dropArea = document.getElementById('drop');
 
 function dragHandler(e) {
@@ -22,6 +25,13 @@ function dragHandler(e) {
             i++;
         }
         outputEl.innerHTML = info
+    }
+
+    if (e.type === '') {
+        // 说明是目录
+        spriteTask(e.path, path.join(__dirname, './test'), function() {
+            console.log('start spriteTask')
+        })
     }
 }
 

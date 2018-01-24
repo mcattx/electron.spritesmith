@@ -1,4 +1,4 @@
-const { electron, remote } = require('electron')
+const { electron, remote } = nodeRequire('electron')
 
 const Menu = remote.Menu
 
