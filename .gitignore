@@ -15,11 +15,14 @@ node_modules/
 
 # vscode
 .vscode
-.code-workspace
+*.code-workspace
 
 # learn.md
 learn.md
 
 # WeFlow
 WeFlow
-*.code-workspace
+
+# test output
+test/
+output/

@@ -38,6 +38,7 @@
             <p>Drop & Drag</p>
           </div>
         </div>
+        <div class="file-info"></div> 
       </div>
     </div>
 
@@ -49,8 +50,13 @@
     <script>
       // You can also require other files to run in this process
       nodeRequire('./renderer.js')
-      nodeRequire('./src/menu.js')
-      nodeRequire('./src/drop.js')
+      nodeRequire('./config/menu.js')
+      nodeRequire('./assets/js/app.js')
+    </script>
+
+    <script>
+      // create client
+      nodeRequire('electron-connect').client.create();
     </script>
     
   </body>

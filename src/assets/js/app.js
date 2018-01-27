@@ -1,5 +1,5 @@
 const path = nodeRequire('path')
-const spriteTask = nodeRequire(path.join(__dirname, '/tasks/sprite.js'));
+const spriteTask = nodeRequire(path.join(__dirname, '/_tasks/sprite.js'));
 
 document.addEventListener('drop', (e) => {
     e.preventDefault();
@@ -7,7 +7,7 @@ document.addEventListener('drop', (e) => {
 
     for (let f of e.dataTransfer.files) {
         const sourePath = f.path;
-        const destPath = path.join(__dirname, '/output', f.name);
+        const destPath = path.join(__dirname, '../../../output', f.name);
         spriteTask(sourePath, destPath, function() {
             console.log('SpriteTask Done')
         })

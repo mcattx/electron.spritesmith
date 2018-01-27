@@ -2,9 +2,10 @@
   "name": "Esprite",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/main.js",
   "scripts": {
     "start": "electron .",
+    "dev": "gulp dev",
     "test": ""
   },
   "repository": {
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/titancat/electron.spritesmith#readme",
   "dependencies": {
+    "electron-connect": "^0.6.3",
     "gulp": "^3.9.1",
     "gulp.spritesmith": "^6.9.0"
   }

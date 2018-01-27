@@ -1,6 +1,9 @@
+const path = require('path')
+const url = require('url')
 const electron = require('electron')
+const client = require('electron-connect').client
 
-const config = require('./src/config')
+const config = require('./config/config')
 
 // Module to control application life.
 const app = electron.app
@@ -10,8 +13,7 @@ const ipc = electron.ipcMain
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
-const path = require('path')
-const url = require('url')
+
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -63,6 +65,9 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  client.create(mainWindow)
+
 }
 
 // This method will be called when Electron has finished
