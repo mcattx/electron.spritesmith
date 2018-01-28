@@ -3,8 +3,6 @@ const gulp = nodeRequire('gulp')
 const spritesmith = nodeRequire('gulp.spritesmith')
 
 function spriteTask(sourcePath, destPath, callback) {
-    console.log(sourcePath)
-    console.log(destPath)
     
     function run() {
         let spriteData = gulp.src(sourcePath + '/*.png')
