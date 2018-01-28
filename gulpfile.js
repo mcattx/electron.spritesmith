@@ -10,5 +10,5 @@ console.log(codeSourcePath)
 gulp.task('dev', () => {
     electronConnect.start()
     gulp.watch(['src/main.js', 'src/assets/js/**/*.js'], electronConnect.restart)
-    gulp.watch('src/**/*.{html, css}', electronConnect.reload)
+    gulp.watch('src/**/*.{html,css}', electronConnect.reload)
 })

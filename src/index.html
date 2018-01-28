@@ -31,21 +31,24 @@
         </ul>
       </div>
       <div class="workspace">
+        <div class="toast"></div>
         <h3>Workspace</h3>
-        <h3 id="output"></h3>
         <div class="drop-box">
           <div id="drop">
             <p>Drop & Drag</p>
           </div>
         </div>
-        <div class="file-info"></div> 
+        <div class="dir-info"></div>
+        <div class="file-info">
+          <ul class="file-ul">
+            <li class="file-item">
+              <span class="file-name">a.png</span>
+              <span class="file-size">10.6KB</span>
+            </li>
+          </ul>
+        </div> 
       </div>
     </div>
-
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    <!-- We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>. -->
 
     <script>
       // You can also require other files to run in this process
