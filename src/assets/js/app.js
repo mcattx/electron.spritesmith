@@ -44,7 +44,9 @@ document.addEventListener('drop', (e) => {
                 showToast('Build Sprite Successfully.')
             })
         }).catch((err) => {
-            showToast('The folder is empty!', 'error')
+            if (err) {
+                showToast(err.message, 'error')
+            }
         })
         
         return false;

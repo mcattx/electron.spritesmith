@@ -19,25 +19,36 @@ function readdirInPromise(path) {
 
 /**
  * Check if a folder is empty
- * @param {String} path 
+ * @param {String} filePath 
  * @return {Promise}
  */
-function checkEmptyDir(path) {
+function checkEmptyDir(filePath) {
     return new Promise((resolve, reject) => {
-        readdirInPromise(path).then((fileList) => {
-            if (fileList[0]) {
+        readdirInPromise(filePath).then((filesList) => {
+            if (filesList[0]) {
+                // determine whether all files are png
+                let isPng = true
+                filesList.forEach((file) => {
+                    let currentFilePath = path.join(filePath, file)
+                    console.log(getFileMimeType(currentFilePath).fileType)
+                    if (getFileMimeType(currentFilePath).fileType !== 'png') {
+                        isPng = false;
+                        reject(new Error('ESprite: File type error.'))
+                    }
+                })
+                // let fileDir = path.join(filePath, filesList[1]);
+                // let result = getFileMimeType(fileDir)
+                // console.log(result)
                 resolve()
             } else {
                 reject()
             }
         }).catch((err) => {
+            console.log(err)
             reject(err)
         })
     })
 }
-
-
-
 
 function getFileMimeType (filePath){
     var buffer = new Buffer(8);
