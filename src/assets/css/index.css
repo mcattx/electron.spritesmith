@@ -63,6 +63,10 @@ header {
     color: #7a838f;
 }
 
+#save, #clear {
+    cursor: not-allowed;
+}
+
 .menu-item a:hover:before {
     position: absolute;
     top: 0;
