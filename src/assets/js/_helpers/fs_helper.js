@@ -27,29 +27,27 @@ function checkEmptyDir(filePath) {
         readdirInPromise(filePath).then((filesList) => {
             if (filesList[0]) {
                 // determine whether all files are png
-                let isPng = true
                 filesList.forEach((file) => {
                     let currentFilePath = path.join(filePath, file)
-                    console.log(getFileMimeType(currentFilePath).fileType)
-                    if (getFileMimeType(currentFilePath).fileType !== 'png') {
-                        isPng = false;
-                        reject(new Error('ESprite: File type error.'))
+                    if (getFileMimeType(currentFilePath).fileType === 'jpg' || getFileMimeType(currentFilePath).fileType === 'gif') {
+                        reject(new Error('ESprite Error: File type error.'))
                     }
                 })
-                // let fileDir = path.join(filePath, filesList[1]);
-                // let result = getFileMimeType(fileDir)
-                // console.log(result)
                 resolve()
             } else {
-                reject()
+                reject(new Error('ESprite Error: Directory is empty.'))
             }
         }).catch((err) => {
-            console.log(err)
             reject(err)
         })
     })
 }
 
+/**
+ * get mimeType of file
+ * @param {String} filePath
+ * @returns {Object}
+ */
 function getFileMimeType (filePath){
     var buffer = new Buffer(8);
     var fd = fs.openSync(filePath, 'r');
@@ -107,4 +105,3 @@ function getFileMimeType (filePath){
 }
 
 module.exports.checkEmptyDir = checkEmptyDir;
-module.exports.getFileMimeType = getFileMimeType;
