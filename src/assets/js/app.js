@@ -1,6 +1,7 @@
 const path = nodeRequire('path')
 const electron = nodeRequire('electron')
 const clipboard = electron.clipboard
+const shell = electron.shell
 
 const spriteTask = nodeRequire(path.join(__dirname, '/_tasks/sprite.js'))
 const fsHelper = nodeRequire(path.join(__dirname, '../js/_helpers/fs_helper.js'))
@@ -50,6 +51,11 @@ document.addEventListener('drop', (e) => {
                 $('.output-path').innerHTML = destPath
                 $('.result').classList.add('show')
                 showToast('Build Sprite Successfully.')
+
+                // The code may be a memory leak
+                $('.view').addEventListener('click', () => {
+                    shell.showItemInFolder(copyStr)
+                })
                 $('.copy').addEventListener('click', () => {
                     clipboard.writeText(copyStr)
                     $('.tip').classList.add('show')
