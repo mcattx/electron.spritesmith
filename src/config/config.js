@@ -13,7 +13,7 @@ Config.PLATFORM = process.platform
 Config.DEFAULT_PATH = Config.PLATFORM === 'win32' ? 'desktop' : 'home'
 Config.CHECKURL = ''
 Config.DOWNLOADURL = ''
-Config.debug = true
+Config.debug = false
 
 Config.getStorage = () => {
     const storage = window && window.localStorage

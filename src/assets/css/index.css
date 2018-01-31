@@ -237,3 +237,22 @@ header {
 .result .copy {
     right: 100px;
 }
+
+.result .tip {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    right: 70px;
+    bottom: 50px;
+    padding: 5px 10px;
+    font-style: normal;
+    color: #999;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 6px 0 rgba(0,0,0,0.3);
+}
+
+.result .tip.show {
+    display: block;
+}

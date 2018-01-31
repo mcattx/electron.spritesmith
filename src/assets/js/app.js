@@ -1,6 +1,10 @@
 const path = nodeRequire('path')
+const electron = nodeRequire('electron')
+const clipboard = electron.clipboard
+
 const spriteTask = nodeRequire(path.join(__dirname, '/_tasks/sprite.js'))
 const fsHelper = nodeRequire(path.join(__dirname, '../js/_helpers/fs_helper.js'))
+
 
 const $ = function(el) {
     return document.querySelectorAll(el)[0]
@@ -41,10 +45,18 @@ document.addEventListener('drop', (e) => {
                 $('.dir-info').classList.add('show')
             }
             spriteTask(sourePath, destPath, function() {
+                let copyStr = destPath + ''
                 $('.dir-info').classList.remove('show')
                 $('.output-path').innerHTML = destPath
                 $('.result').classList.add('show')
                 showToast('Build Sprite Successfully.')
+                $('.copy').addEventListener('click', () => {
+                    clipboard.writeText(copyStr)
+                    $('.tip').classList.add('show')
+                    setTimeout(() => {
+                        $('.tip').classList.remove('show')
+                    }, 1000)
+                })
             })
         }).catch((err) => {
             if (err) {
