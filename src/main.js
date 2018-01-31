@@ -26,7 +26,7 @@ function createWindow () {
   // Create the browser window.
   // mainWindow = new BrowserWindow({width: 800, height: 600})
   const windowConfig = {
-    width: 750,
+    width: 650,
     height: 500,
     resizable: false,
     title: 'Esprite',

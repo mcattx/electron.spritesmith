@@ -6,6 +6,10 @@
     visibility:hidden;
 }
 
+a {
+    text-decoration: none;
+}
+
 header {
     width: 100%;
     height: 60px;
@@ -63,7 +67,8 @@ header {
     color: #7a838f;
 }
 
-#save, #clear {
+#settting, #clear {
+    display: none;
     cursor: not-allowed;
 }
 
@@ -81,7 +86,7 @@ header {
 .workspace {
     position: relative;
     float: left;
-    padding-bottom: 40px;
+    padding-bottom: 98px;
 }
 
 .toast {
@@ -184,4 +189,51 @@ header {
 
 .file-size {
     margin-left: 20px;
+}
+
+.result {
+    display: none;
+    position: relative;
+    width: 400px;
+    height: 120px;
+    margin: 0 auto;
+    padding: 0 20px;
+    color: #6fba50;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 2px solid #6fba50;
+}
+
+.result.show {
+    display: block;
+}
+
+.result a {
+    position: absolute;
+    bottom: 10px;
+    display: block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #6fba50;
+}
+
+.result span {
+    position: relative;
+    top: 15px;
+}
+
+.result a:hover {
+    background-color: #5cb934;
+}
+
+.result .view {
+    left: 100px;
+}
+
+.result .copy {
+    right: 100px;
 }

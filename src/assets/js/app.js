@@ -41,6 +41,9 @@ document.addEventListener('drop', (e) => {
                 $('.dir-info').classList.add('show')
             }
             spriteTask(sourePath, destPath, function() {
+                $('.dir-info').classList.remove('show')
+                $('.output-path').innerHTML = destPath
+                $('.result').classList.add('show')
                 showToast('Build Sprite Successfully.')
             })
         }).catch((err) => {
