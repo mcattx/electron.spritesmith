@@ -1,1 +1,1 @@
-## A app to generate sprite based on electron
+## An app to generate sprite based on electron
