@@ -1,7 +1,6 @@
 const path = require('path')
 const url = require('url')
 const electron = require('electron')
-const client = require('electron-connect').client
 
 const config = require('./config/config')
 
@@ -13,13 +12,11 @@ const ipc = electron.ipcMain
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
-
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 // 定义 logo 图片
-let logo = ''
+let logo = './assets/images/512x512.png'
 let willClose = false
 
 function createWindow () {
@@ -65,8 +62,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-
-  client.create(mainWindow)
 
 }
 
@@ -117,9 +112,32 @@ ipc.on('checkForUpdate', (e, status) => {
     }
   }
 
-  dialog.showMessageBox(option, (index) => {
+  dialog.showMessageBox(options, (index) => {
     e.sender.send('checkForUpdateReply', index, status)
   })
+})
+
+ipc.on('showAbout', (e, status) => {
+  let win = new BrowserWindow({
+      width: 360,
+      height: 400,
+      resizable: false,
+      title: '关于'
+  });
+
+  let aboutPath = 'file://' + __dirname + '/about.html';
+  win.loadURL(aboutPath);
+
+  // Emitted when the window is closed.
+  win.on('closed', function () {
+      // Dereference the window object, usually you would store windows
+      // in an array if your app supports multi windows, this is the time
+      // when you should delete the corresponding element.
+      win = null;
+  });
+})
+
+ipc.on('openDir', (e, status) => {
 })
 
 // In this file you can include the rest of your app's specific main process

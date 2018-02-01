@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Esprite</title>
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+  </head>
+  <script>
+    window.nodeRequire = require;
+    delete window.require;
+    delete window.exports;
+    delete window.module;
+  </script>
+  <body>
+    
+    <div class="container" id="j-about">
+        <div class="logo"></div>
+        <div class="title">Esprite</div>
+        <div class="version">Version <span id="j-version">1.0.0</span></div>
+        <div class="desc">An app to generate sprite based on electron</div>
+    
+        <div class="buttom">
+            <div class="link">
+                <a href="https://github.com/titancat/electron.spritesmith" id="j-link">Github</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        const electron = nodeRequire('electron')
+      
+        const $ = function(el) {
+            return document.querySelectorAll(el)[0]
+        }
+
+        $('#j-link').addEventListener('click', function(e){
+
+            electron.shell.openExternal(e.target.href);
+
+            e.preventDefault();
+        });
+        var version = nodeRequire('../package.json').version;
+        $('#j-version').innerHTML = version;
+    </script>
+        
+  </body>
+</html>

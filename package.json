@@ -4,7 +4,7 @@
   "description": "An app to generate sprite based on electron",
   "main": "src/main.js",
   "build": {
-    "appId": "com.esprite.app",
+    "appId": "com.Esprite.app",
     "productName": "Esprite",
     "mac": {
       "target": ["dmg", "zip"],

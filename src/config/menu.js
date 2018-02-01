@@ -1,4 +1,4 @@
-const { electron, remote, shell } = nodeRequire('electron')
+const { electron, remote, shell, ipcRenderer } = nodeRequire('electron')
 
 const Menu = remote.Menu
 
@@ -15,7 +15,7 @@ const template = [
                     })
 
                     if (projectPath && projectPath.length) {
-                        openProject(projectPath[0])
+                        ipcRenderer.send('openDir')
                     }
                 }
             },
@@ -64,24 +64,17 @@ if (process.platform === 'darwin') {
             {
                 label: '关于 Esprite',
                 click: (item, focusedWindow) => {
-                    showAbout()
+                    ipcRenderer.send('showAbout')
                 }
             },
             {
                 type: 'separator'
             },
             {
-                label: '偏好设置',
-                accelerator: 'Command+,',
-                click: () => {
-                    settingFn()
-                }
-            },
-            {
                 label: '检查更新...',
                 accelerator: '',
                 click: () => {
-                    checkForUpdate()
+                    ipcRenderer.send('checkForUpdate')
                 }
             },
             {
@@ -103,17 +96,18 @@ if (process.platform === 'darwin') {
         label: '检查更新...',
         accelerator: '',
         click: () => {
-            checkForUpdate()
+            ipcRenderer.send('checkForUpdate')
         }
     })
 
     helpItem.submenu.unshift({
         label: '关于 Esprite',
         click: (item, focusedWindow) => {
-            showAbout()
+            ipcRenderer.send('showAbout')
         }
     })
 }
+
 
 
 const menu = Menu.buildFromTemplate(template)
