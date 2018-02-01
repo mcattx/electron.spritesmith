@@ -1,4 +1,4 @@
-const { electron, remote } = nodeRequire('electron')
+const { electron, remote, shell } = nodeRequire('electron')
 
 const Menu = remote.Menu
 
@@ -31,37 +31,27 @@ const template = [
         ]
     },
     {
-        label: '编辑',
-        submenu: [
-            {
-                label: '复制',
-                accelerator: 'CmdOrCtrl+C',
-                role: 'copy'
-            }
-        ]
-    },
-    {
         label: '帮助',
         role: 'help',
         submenu: [
             {
                 label: 'Esprite 使用帮助',
                 click: () => {
-                    electron.shell.openExternal('https://www.baid.com')
+                    shell.openExternal('https://github.com/titancat/electron.spritesmith')
                 }
             },
             {
                 label: 'Esprite 官网',
                 click: () => {
-                    electron.shell.openExternal('https://github.com/titancat/esprite')
+                    shell.openExternal('https://github.com/titancat/electron.spritesmith')
                 }
             },
             {
                 label: '建议或者反馈',
                 click: () => {
-                    electron.shell.openExternal('https://github.com/titancat/esprite/issues')
+                    shell.openExternal('https://github.com/titancat/electron.spritesmith/issues')
                 }
-            },
+            }
         ]
     }
 ]
@@ -101,7 +91,6 @@ if (process.platform === 'darwin') {
                 label: '退出',
                 accelerator: 'Command+Q',
                 click: () => {
-                    stopWatch()
                     remote.app.quit()
                 }
             }
