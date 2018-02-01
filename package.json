@@ -1,12 +1,27 @@
 {
   "name": "Esprite",
   "version": "1.0.0",
-  "description": "",
+  "description": "An app to generate sprite based on electron",
   "main": "src/main.js",
+  "build": {
+    "appId": "com.esprite.app",
+    "productName": "Esprite",
+    "mac": {
+      "target": ["dmg", "zip"],
+      "category": "public.app-category.developer-tools",
+      "icon": "build/icon.icns"
+    },
+    "win": {
+      "target": ["nsis", "zip"],
+      "icon": "build/icon.ico"
+    },
+    "copyright": "mcattx"
+  },
   "scripts": {
     "start": "electron .",
     "dev": "gulp dev",
-    "test": ""
+    "pack": "electron-builder -m",
+    "dist": "electron-builder"
   },
   "repository": {
     "type": "git",
@@ -19,7 +34,8 @@
   "author": "mcattx@gmail.com",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.7.11"
+    "electron": "^1.7.11",
+    "electron-builder": "^19.55.3"
   },
   "bugs": {
     "url": "https://github.com/titancat/electron.spritesmith/issues"
