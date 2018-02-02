@@ -31,6 +31,22 @@ header {
     height: 418px;
 }
 
+.workspace-box {
+    display: none;
+}
+
+.workspace-box.show {
+    display: block;
+}
+
+.setting-box {
+    display: none;
+}
+
+.setting-box.show {
+    display: block;
+}
+
 .menu {
     float: left;
     width: 90px;
@@ -225,3 +241,50 @@ header {
 .result .tip.show {
     display: block;
 }
+
+.setting-box {
+    position: relative;
+    width: 500px;
+    height: 418px;
+}
+
+.setting-head {
+    width: 100%;
+    height: 54px;
+    line-height: 54px;
+    border-bottom: 1px solid #eee;
+}
+
+#backHome {
+    color: #65b6f7;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.setting-space {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 200px;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.currentPath {
+    color: #666;
+    font-weight: normal;
+}
+
+#changePath {
+    padding: 2px 4px;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #65b6f7;
+}
+
+

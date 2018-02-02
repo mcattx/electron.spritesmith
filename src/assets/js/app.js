@@ -81,10 +81,6 @@ document.addEventListener('drop', (e) => {
     }
 })
 
-$('#clear').addEventListener('click', () => {
-    $('.dir-info').classList.remove('show');
-    $('.result').classList.remove('show')
-})
 
 document.addEventListener('dragover', (e) => {
     e.preventDefault();

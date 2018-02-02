@@ -9,6 +9,7 @@ const app = electron.app
 
 const dialog = electron.dialog
 const ipc = electron.ipcMain
+const session = electron.session
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -61,6 +62,31 @@ function createWindow () {
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
     mainWindow = null
+  })
+
+  // This must be invoked after app.ready
+  let nativeCookie = session.defaultSession.cookies;
+  let expireDate = Math.round(new Date().getTime() / 1000) + 365 * 24 * 60 * 60
+  let cookie = {
+    // fake url
+    url: 'http://esprite.com',
+    name: 'output',
+    value: app.getPath('pictures'),
+    expirationDate: expireDate
+  }
+  nativeCookie.get({url: cookie.url}, (err, cookies) => {
+    if (err) {
+      console.error(err)
+    }
+    if (cookies.length) {
+      console.log(cookies)
+    } else {
+      nativeCookie.set(cookie, (err) => {
+        if(err) {
+          console.error(err)
+        }
+      })
+    }
   })
 
 }
@@ -139,6 +165,8 @@ ipc.on('showAbout', (e, status) => {
 
 ipc.on('openDir', (e, status) => {
 })
+
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
