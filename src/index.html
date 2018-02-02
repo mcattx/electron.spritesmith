@@ -28,7 +28,7 @@
         </ul>
       </div>
       <div class="workspace">
-        <div class="workspace-box">
+        <div class="workspace-box show">
             <div class="toast"></div>
             <div class="drop-box">
               <div id="drop">
@@ -44,7 +44,7 @@
               <i class="tip">Copied to clipboard</i>
             </div>
         </div>
-        <div class="setting-box show">
+        <div class="setting-box">
           <div class="setting-head">
             <a id="backHome" href="javascript:void(0)">< Home</a>
           </div>
@@ -68,25 +68,20 @@
     <script>
 
       const electron = nodeRequire('electron')
-      const ipcRenderer = electron.ipcRenderer
       const dialog = electron.remote.dialog
-      const session = electron.remote.session
-      
-      let nativeCookie = session.defaultSession.cookies
-
-      console.log(session)
+      const storage = nodeRequire('electron-json-storage')
 
       const $ = function(el) {
         return document.querySelectorAll(el)[0]
       }
 
-      
-      
-      nativeCookie.get({url: 'http://esprite.com'}, (err, cookies) => {
+      storage.get('Esprite', (err, data) => {
         if (err) {
           console.error(err)
         }
-        $('.currentPath').innerHTML = cookies[0].value
+        if (data && data.hasOwnProperty('output')) {
+          $('.currentPath').innerHTML = data.output
+        }
       })
 
       $('#clear').addEventListener('click', () => {
@@ -109,19 +104,12 @@
             if (filePaths && filePaths[0]) {
               $('.currentPath').innerHTML = filePaths[0]
               
-              let cookie = {
-                // fake url
-                url: 'http://esprite.com',
-                name: 'output',
-                value: filePaths[0]
-              }
-              console.log(cookie)
-              nativeCookie.set(cookie, (err) => {
+              storage.set('Esprite', {output: filePaths[0]}, (err) => {
                 if(err) {
                   console.error(err)
                 }
               })
-              // ipcRenderer.send('setOutputPath')
+
             }
           })
       });

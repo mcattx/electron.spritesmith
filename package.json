@@ -7,12 +7,18 @@
     "appId": "com.Esprite.app",
     "productName": "Esprite",
     "mac": {
-      "target": ["dmg", "zip"],
+      "target": [
+        "dmg",
+        "zip"
+      ],
       "category": "public.app-category.developer-tools",
       "icon": "build/icon.icns"
     },
     "win": {
-      "target": ["nsis", "zip"],
+      "target": [
+        "nsis",
+        "zip"
+      ],
       "icon": "build/icon.ico"
     },
     "copyright": "mcattx"
@@ -43,6 +49,7 @@
   "homepage": "https://github.com/titancat/electron.spritesmith#readme",
   "dependencies": {
     "electron-connect": "^0.6.3",
+    "electron-json-storage": "^4.0.2",
     "gulp": "^3.9.1",
     "gulp.spritesmith": "^6.9.0"
   }
