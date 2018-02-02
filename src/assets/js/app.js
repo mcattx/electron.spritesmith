@@ -29,7 +29,7 @@ function showToast(info, type) {
         }
         $('.toast').classList.remove('show')
         $('.toast').innerHTML = ''
-    }, 2000);
+    }, 3000);
 }
 
 document.addEventListener('drop', (e) => {
@@ -61,7 +61,7 @@ document.addEventListener('drop', (e) => {
                     $('.tip').classList.add('show')
                     setTimeout(() => {
                         $('.tip').classList.remove('show')
-                    }, 1000)
+                    }, 1500)
                 })
             })
         }).catch((err) => {
@@ -79,6 +79,11 @@ document.addEventListener('drop', (e) => {
             showToast('Build Sprite Successfully.')
         })
     }
+})
+
+$('#clear').addEventListener('click', () => {
+    $('.dir-info').classList.remove('show');
+    $('.result').classList.remove('show')
 })
 
 document.addEventListener('dragover', (e) => {

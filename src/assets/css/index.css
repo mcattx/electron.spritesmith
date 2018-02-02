@@ -28,6 +28,7 @@ header {
 
 .container {
     overflow: hidden;
+    height: 418px;
 }
 
 .menu {
@@ -67,11 +68,6 @@ header {
     color: #7a838f;
 }
 
-#settting, #clear {
-    display: none;
-    cursor: not-allowed;
-}
-
 .menu-item a:hover:before {
     position: absolute;
     top: 0;
@@ -92,6 +88,7 @@ header {
 .toast {
     display: none;
     position: absolute;
+    z-index: 2;
     top: 10px;
     right: 0;
     min-width: 200px;
@@ -112,16 +109,11 @@ header {
     border-color: #eed3d7;
 }
 
-.workspace h3 {
-    margin-top: 35px;
-    margin-left: 30px;
-    font-size: 16px;
-}
-
 .drop-box {
     position: relative;
-    width: 550px;
+    width: 500px;
     height: 250px;
+    margin-top: 15px;
     line-height: 110px;
 }
 
@@ -167,29 +159,6 @@ header {
     display: block;
 }
 
-.file-info {
-    display: none;
-    width: 500px;
-    min-height: 200px;
-    margin: 10px auto;
-    background-color: #fff;
-}
-
-.file-item {
-    padding: 0px 20px;
-    color: #65b6f7;
-    font-size: 14px;
-    line-height: 42px;
-    border: 2px solid #65b6f7;
-}
-
-.file-name {
-    font-size: 16px;
-}
-
-.file-size {
-    margin-left: 20px;
-}
 
 .result {
     display: none;
