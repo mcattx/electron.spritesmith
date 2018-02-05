@@ -1,5 +1,6 @@
 const path = nodeRequire('path')
 const electron = nodeRequire('electron')
+const storage = nodeRequire('electron-json-storage')
 const clipboard = electron.clipboard
 const shell = electron.shell
 
@@ -39,31 +40,43 @@ document.addEventListener('drop', (e) => {
     for (let f of e.dataTransfer.files) {
         const sourePath = f.path;
         const destPath = path.join(__dirname, '../../../output', f.name);
-    
+
         fsHelper.checkEmptyDir(sourePath).then(() => {
             if (f.name) {
                 $('.dir-info').innerHTML = 'Directory ' + f.name + ' loaded.'
                 $('.dir-info').classList.add('show')
             }
-            spriteTask(sourePath, destPath, function() {
-                let copyStr = destPath + ''
-                $('.dir-info').classList.remove('show')
-                $('.output-path').innerHTML = destPath
-                $('.result').classList.add('show')
-                showToast('Build Sprite Successfully.')
 
-                // The code may be a memory leak
-                $('.view').addEventListener('click', () => {
-                    shell.showItemInFolder(copyStr)
-                })
-                $('.copy').addEventListener('click', () => {
-                    clipboard.writeText(copyStr)
-                    $('.tip').classList.add('show')
-                    setTimeout(() => {
-                        $('.tip').classList.remove('show')
-                    }, 1500)
-                })
+            storage.get('Esprite', (err, data) => {
+                if (err) {
+                    console.error(err)
+                }
+                if (data && data.hasOwnProperty('output')) {
+                    let destPath = `${data.output}/Esprite-output/${f.name}`
+
+                    spriteTask(sourePath, destPath, function() {
+                        let copyStr = destPath + ''
+                        $('.dir-info').classList.remove('show')
+                        $('.output-path').innerHTML = destPath
+                        $('.result').classList.add('show')
+                        showToast('Build Sprite Successfully.')
+        
+                        // The code may be a memory leak
+                        $('.view').addEventListener('click', () => {
+                            shell.showItemInFolder(copyStr)
+                        })
+                        $('.copy').addEventListener('click', () => {
+                            clipboard.writeText(copyStr)
+                            $('.tip').classList.add('show')
+                            setTimeout(() => {
+                                $('.tip').classList.remove('show')
+                            }, 1500)
+                        })
+                    })
+                }
             })
+
+            
         }).catch((err) => {
             if (err) {
                 showToast(err.message, 'error')
