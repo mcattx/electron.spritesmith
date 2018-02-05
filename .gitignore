@@ -26,3 +26,4 @@ WeFlow
 # test output
 test/
 output/
+*.sketch
