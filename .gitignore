@@ -27,3 +27,4 @@ WeFlow
 test/
 output/
 *.sketch
+dist
